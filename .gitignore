@@ -1,0 +1,59 @@
+# Ignore application properties
+application.properties
+application.yml
+
+# Ignore environment files (jaga keamanan variabel lingkungan)
+.env
+*.env
+.env.local
+
+# Ignore database dumps
+*.sql
+*.sqlite
+*.db
+
+# Ignore IntelliJ workspace files
+.idea/workspace.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+
+# Ignore Maven & Gradle build output
+target/
+build/
+
+# Ignore IDE-specific files
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+.idea/
+*.iws
+*.iml
+*.ipr
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore node_modules
+node_modules/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.swp
+*.swo
+*.bak

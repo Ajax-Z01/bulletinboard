@@ -1,0 +1,20 @@
+spring.application.name=bulletinboard
+
+# PostgreSQL Configuration
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.sql.init.mode=always
+
+
+# Driver PostgreSQL
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA settings
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.hibernate.ddl-auto=none
+spring.jpa.show-sql=true
+
+# MyBatis Configuration
+mybatis.configuration.map-underscore-to-camel-case=true
