@@ -52,4 +52,3 @@ Feel free to fork the repo and submit pull requests! Contributions are welcome t
 ---
 
 Let me know if you want to modify or add anything! 🚀  
-```

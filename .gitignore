@@ -7,11 +7,6 @@ application.yml
 *.env
 .env.local
 
-# Ignore database dumps
-*.sql
-*.sqlite
-*.db
-
 # Ignore IntelliJ workspace files
 .idea/workspace.xml
 .idea/usage.statistics.xml

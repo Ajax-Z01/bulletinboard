@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bulletins")
@@ -40,13 +41,14 @@ public class BulletinController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateBulletin(@PathVariable Long id, @RequestBody Bulletin bulletin) {
         bulletin.setId(id);
-        bulletinService.updateBulletin(bulletin);
+        bulletinService.updateBulletin(id, bulletin);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBulletin(@PathVariable Long id) {
-        bulletinService.deleteBulletin(id);
+    public ResponseEntity<Void> deleteBulletin(@PathVariable Long id, @RequestBody Map<String, String> request) {
+        String password = request.get("password");
+        bulletinService.deleteBulletin(id, password);
         return ResponseEntity.noContent().build();
     }
 }
