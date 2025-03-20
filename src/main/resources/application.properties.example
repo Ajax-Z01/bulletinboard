@@ -18,3 +18,9 @@ spring.jpa.show-sql=true
 
 # MyBatis Configuration
 mybatis.configuration.map-underscore-to-camel-case=true
+
+# Thymeleaf Configuration
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.mode=HTML5
+spring.thymeleaf.cache=false

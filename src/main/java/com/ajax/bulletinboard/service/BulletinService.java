@@ -39,23 +39,23 @@ public class BulletinService {
         return bulletin;
     }    
 
-    public void updateBulletin(Long id, Bulletin bulletin) {
+    public void updateBulletin(Long id, Bulletin bulletin, String password) {
         Bulletin existingBulletin = bulletinMapper.findById(id);
         if (existingBulletin == null) {
-            throw new IllegalArgumentException("Bulletin with ID " + id + " not found.");
+            throw new IllegalArgumentException("Bulletin not found.");
         }
-    
+        if (!existingBulletin.getPassword().equals(password)) {
+            throw new IllegalArgumentException("Incorrect password.");
+        }
         if (bulletin.getTitle() != null) {
             existingBulletin.setTitle(bulletin.getTitle());
         }
         if (bulletin.getContent() != null) {
             existingBulletin.setContent(bulletin.getContent());
         }
-    
         existingBulletin.setUpdatedAt(LocalDateTime.now());
-    
         bulletinMapper.update(existingBulletin);
-    }    
+    }   
 
     public void deleteBulletin(Long id, String password) {
         Bulletin bulletin = bulletinMapper.findById(id);
@@ -66,7 +66,7 @@ public class BulletinService {
             throw new IllegalArgumentException("Incorrect password.");
         }
         bulletinMapper.softDelete(id);
-    }
+    }    
     
     public void incrementViews(Long id) {
         bulletinMapper.incrementViews(id);

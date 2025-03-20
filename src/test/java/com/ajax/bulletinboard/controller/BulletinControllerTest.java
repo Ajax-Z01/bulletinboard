@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Collections;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -31,7 +32,7 @@ public class BulletinControllerTest {
     private BulletinService bulletinService;
 
     @InjectMocks
-    private BulletinController bulletinController;
+    private BulletinApiController bulletinController;
 
     @BeforeEach
     public void setup() {
@@ -92,21 +93,29 @@ public class BulletinControllerTest {
         updatedBulletin.setTitle("Updated Title");
         updatedBulletin.setContent("Updated Content");
 
-        doNothing().when(bulletinService).updateBulletin(eq(1L), any(Bulletin.class));
+        String requestBody = objectMapper.writeValueAsString(
+                Map.of(
+                        "title", "Updated Title",
+                        "content", "Updated Content",
+                        "password", "testPassword"
+                )
+        );
+
+        doNothing().when(bulletinService).updateBulletin(eq(1L), any(Bulletin.class), anyString());
 
         mockMvc.perform(put("/api/bulletins/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(updatedBulletin)))
+                .content(requestBody))
                 .andExpect(status().isNoContent());
 
-        verify(bulletinService, times(1)).updateBulletin(eq(1L), any(Bulletin.class));
+        verify(bulletinService, times(1)).updateBulletin(eq(1L), any(Bulletin.class), anyString());
     }
 
     @Test
     public void testDeleteBulletin() throws Exception {
         doNothing().when(bulletinService).deleteBulletin(eq(1L), anyString());
 
-        String requestBody = "{\"password\": \"testPassword\"}";
+        String requestBody = objectMapper.writeValueAsString(Map.of("password", "testPassword"));
 
         mockMvc.perform(delete("/api/bulletins/1")
                 .contentType(MediaType.APPLICATION_JSON)
