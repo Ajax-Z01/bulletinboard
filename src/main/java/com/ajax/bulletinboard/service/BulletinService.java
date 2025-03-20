@@ -1,7 +1,8 @@
 package com.ajax.bulletinboard.service;
 
-import com.ajax.bulletinboard.mapper.BulletinMapper;
 import com.ajax.bulletinboard.model.Bulletin;
+import com.ajax.bulletinboard.repository.BulletinMapper;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

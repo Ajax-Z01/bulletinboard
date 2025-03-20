@@ -1,4 +1,4 @@
-package com.ajax.bulletinboard.mapper;
+package com.ajax.bulletinboard.repository;
 
 import com.ajax.bulletinboard.model.Bulletin;
 import org.apache.ibatis.annotations.*;
